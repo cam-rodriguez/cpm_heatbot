@@ -50,8 +50,8 @@ jobs:
       - name: Push
         run: git push
 
-      - name: The Slack GitHub Action
-        uses: slackapi/slack-github-action@v4.0.0
-        with:
-          # A location for posting request payloads.
-          incoming_webhook: "https://hooks.slack.com/services/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"
+      # - name: The Slack GitHub Action
+      #   uses: slackapi/slack-github-action@v4.0.0
+      #   with:
+      #     # A location for posting request payloads.
+      #     incoming_webhook: "https://hooks.slack.com/services/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"
