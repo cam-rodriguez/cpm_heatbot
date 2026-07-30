@@ -11,13 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Install uv
-        uses: astral-sh/setup-uv@v7
-      - uses: actions/setup-python@v2
-        with:
-          python-version: '3.9'
-          cache: 'uv'
-      - run: uv sync
 
       - name: download files
         run: bash script.sh
