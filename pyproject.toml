@@ -4,4 +4,15 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "numpy>=2.5.1",
+    "pandas>=3.0.5",
+    "requests>=2.34.2",
+    "sodapy>=2.2.0",
+    "urllib3>=2.7.0",
+]
+
+[dependency-groups]
+dev = [
+    "ipykernel>=7.3.0",
+]
