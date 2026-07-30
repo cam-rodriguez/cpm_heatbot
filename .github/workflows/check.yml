@@ -1,0 +1,40 @@
+name: heatdeaths
+
+on:
+  schedule:
+    - cron: "0 * * * *" # every hour
+  workflow_dispatch:
+
+  
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+          cache: 'uv'
+      - run: uv sync
+
+      - name: download files
+        run: bash script.sh
+
+      - name: add and commit
+        id: add_commit
+        uses: EndBug/add-and-commit@v8
+        with:
+          committer_name: Automated
+          committer_email: actions@users.noreply.github.com
+          message: "Latest data"
+
+      - name: Push
+        run: git push
+
+      - name: The Slack GitHub Action
+        uses: slackapi/slack-github-action@v4.0.0
+        with:
+          # A location for posting request payloads.
+          webhook: "https://hooks.slack.com/services/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"
