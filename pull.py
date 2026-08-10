@@ -27,7 +27,7 @@ from slack_sdk.errors import SlackApiError
 # details about the client, token and dataset:
 agency = "datacatalog.cookcountyil.gov"
 dataset = "cjeq-bs86" # this is the shortlink!
-token = COOK_CO_APPTOKEN
+token = "Q6WYPYmE8Ff40YoqUQJvDXJSR"
 
 # set queries, using SoQL. (vom)
 today_query = f"SELECT * WHERE heat_related = 'true' AND death_date BETWEEN '2026-01-01' AND '{today}'"
@@ -105,7 +105,7 @@ print(len(today_df) - len(yesterday_df))
 stringlink = f'https://{agency}/d/{dataset}'
 gitlink = "https://github.com/cam-rodriguez/cpm_heatbot/tree/a207489e7adb54302c4755b1a0c7349fbddd6413/data"
 
-SLACK_WEBHOOK = SLACK_WEBHOOK_HEATBOT # env secret
+SLACK_WEBHOOK = "https://hooks.slack.com/services/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" #data-heatbot, testing
 MAX_SLACK_BLOCKS = 50
 
 placeholder = "Heat deaths"
