@@ -23,11 +23,16 @@ from slack_sdk.errors import SlackApiError
 #####  pulling data and running queries  #####
 ##############################################
 
-
 # details about the client, token and dataset:
 agency = "datacatalog.cookcountyil.gov"
 dataset = "cjeq-bs86" # this is the shortlink!
 token = "Q6WYPYmE8Ff40YoqUQJvDXJSR"
+
+# set time
+rightnow = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+today = datetime.today().strftime('%Y-%m-%d')
+yesterday = datetime.today() - timedelta(1)
+yesterday = yesterday.strftime('%Y-%m-%d')
 
 # set queries, using SoQL. (vom)
 today_query = f"SELECT * WHERE heat_related = 'true' AND death_date BETWEEN '2026-01-01' AND '{today}'"
@@ -42,12 +47,6 @@ client = Socrata(agency,
 # get metadata related to the dataset
 meta = []
 meta = client.get_metadata(dataset)
-
-# set time
-rightnow = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-today = datetime.today().strftime('%Y-%m-%d')
-yesterday = datetime.today() - timedelta(1)
-yesterday = yesterday.strftime('%Y-%m-%d')
 
 # pull heat-related deaths from socrata into a dataframe
 today_download = client.get(dataset, query=today_query, exclude_system_fields=False)
