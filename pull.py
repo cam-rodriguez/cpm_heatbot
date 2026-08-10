@@ -29,7 +29,7 @@ dataset = "cjeq-bs86" # this is the shortlink!
 token = "Q6WYPYmE8Ff40YoqUQJvDXJSR"
 
 # set time
-rightnow = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+rightnow = datetime.now().strftime('%Y-%m-%d-%H:%M:%S')
 today = datetime.today().strftime('%Y-%m-%d')
 yesterday = datetime.today() - timedelta(1)
 yesterday = yesterday.strftime('%Y-%m-%d')
@@ -60,26 +60,10 @@ all_df = pd.DataFrame(all_download)
 
 ########## save copies of the data to share ##################
 # ## most recent version
-todaypath = f'"./data/today_heatdeaths_{rightnow}.csv"'
-today_df.to_csv(todaypath) # most current data
+todaypath = f'./data/archive/today_heatdeaths_{today}.csv'
+today_df.to_csv(todaypath) # most current data, in archive
+today_df.to_csv('./data/today_heatdeaths.csv')
 all_df.to_csv('./data/all_heatdeaths.csv') # all data pulled
-
-######################################################
-# ## last version before that
-
-# to file
-# today_df.to_csv('./data/today_heatdeaths.csv') # most current data
-# yesterday_df.to_csv('./data/yesterday_heatdeaths.csv') # what the data was yesterday
-
-######## save a version of all 
-
-# to archive
-# today_df.to_csv('./data/archive/today_heatdeaths_lastver.csv') # most current data
-
-# yst_filepath = f'./data/archive/yesterday_heatdeaths_{yesterday}'
-# yesterday_df.to_csv('./data/archive/yesterday_heatdeaths_lastver.csv')
-# all_df.to_csv('./data/archive/all_heatdeaths_lastver.csv')
-#######################################################
 
 # sanity check of full, queried dataset
 print("all heat deaths")
@@ -207,6 +191,7 @@ if newpull.equals(oldpull) != 'True': # in this case, it'll be the newest scrape
 
         # dataformat = f'The updated data rows are below: \n {list}'
         send_message(item, SLACK_WEBHOOK)
+        print("sent!")
 
 
 
