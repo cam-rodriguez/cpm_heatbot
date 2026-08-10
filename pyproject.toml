@@ -8,7 +8,9 @@ dependencies = [
     "numpy>=2.5.1",
     "pandas>=3.0.5",
     "requests>=2.34.2",
+    "slack-sdk>=3.43.0",
     "sodapy>=2.2.0",
+    "tabulate>=0.10.0",
     "urllib3>=2.7.0",
 ]
 
