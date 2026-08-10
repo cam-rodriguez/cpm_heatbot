@@ -26,7 +26,7 @@ from slack_sdk.errors import SlackApiError
 
 
 # the URL we'll send slack alerts to
-SLACK_WEBHOOK = "https://hooks.slack.com/services/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"
+SLACK_WEBHOOK = SLACK_WEBHOOK_HEATBOT
 
 # the slack API only allows sending 50 block elements at a time
 MAX_SLACK_BLOCKS = 50
