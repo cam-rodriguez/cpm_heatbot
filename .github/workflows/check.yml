@@ -36,7 +36,10 @@ jobs:
             .venv
           key: uv-main-${{ hashFiles('uv.lock') }}
 
-      - name: download files
+      - name: download files and push to slack
+        env:
+          SLACK_CHANNEL_WEBHOOK: ${{ secrets.SLACK_CHANNEL_WEBHOOK }}
+          COOK_CO_APPTOKEN: ${{ secrets.COOK_CO_APPTOKEN }}
         run: bash script.sh
 
       - name: add and commit
@@ -45,7 +48,7 @@ jobs:
         with:
           committer_name: Automated
           committer_email: actions@users.noreply.github.com
-          message: "Latest data"
+          message: "Newest scraped data"
 
       - name: Push
         run: git push

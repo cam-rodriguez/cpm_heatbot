@@ -19,6 +19,9 @@ from datetime import date, timedelta
 from slack_sdk.webhook import WebhookClient
 from slack_sdk.errors import SlackApiError
 
+from dotenv import load_dotenv
+
+
 ##############################################
 #####  pulling data and running queries  #####
 ##############################################
@@ -26,10 +29,10 @@ from slack_sdk.errors import SlackApiError
 # details about the client, token and dataset:
 agency = "datacatalog.cookcountyil.gov"
 dataset = "cjeq-bs86" # this is the shortlink!
-token = "Q6WYPYmE8Ff40YoqUQJvDXJSR"
+token = os.getenv("COOK_CO_APPTOKEN")
 
 # set time
-rightnow = datetime.now().strftime('%Y-%m-%d-%H:%M:%S')
+rightnow = datetime.now().strftime('%Y-%m-%d %I:%M:%S %p')
 today = datetime.today().strftime('%Y-%m-%d')
 yesterday = datetime.today() - timedelta(1)
 yesterday = yesterday.strftime('%Y-%m-%d')
@@ -88,7 +91,7 @@ print(len(today_df) - len(yesterday_df))
 stringlink = f'https://{agency}/d/{dataset}'
 gitlink = "https://github.com/cam-rodriguez/cpm_heatbot/tree/a207489e7adb54302c4755b1a0c7349fbddd6413/data"
 
-SLACK_WEBHOOK = "https://hooks.slack.com/services/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" #data-heatbot, testing
+SLACK_WEBHOOK = os.getenv("SLACK_CHANNEL_WEBHOOK") #data-heatbot, testing
 MAX_SLACK_BLOCKS = 50
 
 placeholder = "Heat deaths"
