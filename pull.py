@@ -185,7 +185,7 @@ if newpull.equals(oldpull) != 'True': # in this case, it'll be the newest scrape
     # send leading message about the update with the diff#
 
     text = textgenerator(oldpull, newpull)
-    formatted = f'❗️ *{placeholder} update — {rightnow}* \n {text} \n'
+    formatted = f'❗️ *{placeholder} update — {today}* \n {text} \n'
     send_message(formatted, SLACK_WEBHOOK)
 
     # send the details about each row in the diff #
