@@ -106,16 +106,17 @@ def send_message(content, webhook):
 
 # base text for webhook message
 def textgenerator(df1, df2):
+    newlen = len(df2)
     length = len(df2) - len(df1)
 
     if length == 0:
-        txt = f"*No new data* was added to the dataset between the last scrape and this one. \n <{stringlink}|Click here> to view the data portal, and <{gitlink}|here> to view the most recent copy."
+        txt = f"*No new data* was added to the dataset between the last scrape and this one. The current number of heat deaths this year is {newlen}. \n <{stringlink}|Click here> to view the data portal, and <{gitlink}|here> to view the most recent copy."
 
     elif length == 1:
-        txt = f"*One new row* was added to the dataset between the last scrape and this one. \n <{stringlink}|Click here> to view the data portal, and <{gitlink}|here> to view the most recent copy. <!channel>"
+        txt = f"*One new row* was added to the dataset between the last scrape and this one. The current number of heat deaths this year is {newlen}. \n <{stringlink}|Click here> to view the data portal, and <{gitlink}|here> to view the most recent copy. <!channel>"
 
     elif length > 1:
-        txt = f"*{length} new rows* were added to the dataset between the last scrape and this one. \n <{stringlink}|Click here> to view the data portal, and <{gitlink}|here> to view the most recent copy. <!channel>"
+        txt = f"*{length} new rows* were added to the dataset between the last scrape and this one. The current number of heat deaths this year is {newlen}. \n <{stringlink}|Click here> to view the data portal, and <{gitlink}|here> to view the most recent copy. <!channel>"
 
     else:
         txt = f"Error of some kind..."
