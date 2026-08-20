@@ -89,7 +89,7 @@ print(len(today_df) - len(yesterday_df))
 
 ### setting variables ###
 stringlink = f'https://{agency}/d/{dataset}'
-gitlink = "https://github.com/cam-rodriguez/cpm_heatbot/tree/a207489e7adb54302c4755b1a0c7349fbddd6413/data"
+gitlink = "https://github.com/cam-rodriguez/cpm_heatbot/blob/main/data/today_heatdeaths.csv"
 
 SLACK_WEBHOOK = os.getenv("SLACK_CHANNEL_WEBHOOK") #data-heatbot, testing
 MAX_SLACK_BLOCKS = 50
@@ -110,13 +110,13 @@ def textgenerator(df1, df2):
     length = len(df2) - len(df1)
 
     if length == 0:
-        txt = f"*No new data* was added to the dataset between the last scrape and this one. The current number of heat deaths this year is {newlen}. \n <{stringlink}|Click here> to view the data portal, and <{gitlink}|here> to view the most recent copy."
+        txt = f"No new data was added to the dataset between the last scrape and this one. The current number of heat deaths this year is still {newlen}. \n <{stringlink}|Click here> to view the data portal, and <{gitlink}|here> to view the most recent data."
 
     elif length == 1:
-        txt = f"*One new row* was added to the dataset between the last scrape and this one. The current number of heat deaths this year is {newlen}. \n <{stringlink}|Click here> to view the data portal, and <{gitlink}|here> to view the most recent copy. <!channel>"
+        txt = f"*One new row* was added to the dataset. The current number of heat deaths this year is now {newlen}. \n <{stringlink}|Click here> to view the data portal, and <{gitlink}|here> to view the most recent data. <!channel>"
 
     elif length > 1:
-        txt = f"*{length} new rows* were added to the dataset between the last scrape and this one. The current number of heat deaths this year is {newlen}. \n <{stringlink}|Click here> to view the data portal, and <{gitlink}|here> to view the most recent copy. <!channel>"
+        txt = f"*{length} new rows* were added to the dataset. The current number of heat deaths this year is now {newlen}. \n <{stringlink}|Click here> to view the data portal, and <{gitlink}|here> to view the most recent data. <!channel>"
 
     else:
         txt = f"Error of some kind..."
